@@ -1,0 +1,250 @@
+:root {
+  /* 主要颜色 */
+  --primary-color: #4361ee;
+  --primary-light: #4895ef;
+  --primary-dark: #3a0ca3;
+
+  /* 强调色 */
+  --accent-color: #f72585;
+  --accent-light: #ff6b6b;
+  --accent-dark: #7209b7;
+
+  /* 中性色 */
+  --bg-dark: #121212;
+  --bg-medium: #1e1e1e;
+  --bg-light: #2a2a2a;
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --border-color: rgba(255, 255, 255, 0.12);
+
+  /* 功能色 */
+  --success-color: #4CAF50;
+  --warning-color: #ff9800;
+  --error-color: #ff5252;
+  --info-color: #2196F3;
+
+  /* 图表颜色 */
+  --chart-line: #4cc9f0;
+  --chart-grid: rgba(255, 255, 255, 0.1);
+  --chart-axis: rgba(255, 255, 255, 0.3);
+
+  /* 阴影 */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* 过渡 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* 字体 */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--text-primary);
+  background-color: var(--bg-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--primary-light);
+  text-decoration: inherit;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: var(--primary-color);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium));
+}
+
+h1 {
+  font-size: 2.8em;
+  line-height: 1.2;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary-light), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.8em;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+}
+
+h3 {
+  font-size: 1.4em;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+button {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--bg-medium);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+button:hover {
+  border-color: var(--primary-light);
+  background-color: var(--bg-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: transparent;
+}
+
+button.primary:hover {
+  background-color: var(--primary-light);
+}
+
+button.accent {
+  background-color: var(--accent-color);
+  color: white;
+  border-color: transparent;
+}
+
+button.accent:hover {
+  background-color: var(--accent-light);
+}
+
+input, select, textarea {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  padding: 0.6em 1em;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: var(--bg-medium);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.3);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-medium);
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.card {
+  padding: 1.5em;
+  background-color: var(--bg-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* 亮色模式 */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-dark: #f8f9fa;
+    --bg-medium: #ffffff;
+    --bg-light: #f1f3f5;
+    --text-primary: rgba(0, 0, 0, 0.87);
+    --text-secondary: rgba(0, 0, 0, 0.6);
+    --text-tertiary: rgba(0, 0, 0, 0.38);
+    --border-color: rgba(0, 0, 0, 0.12);
+    --chart-grid: rgba(0, 0, 0, 0.1);
+    --chart-axis: rgba(0, 0, 0, 0.3);
+  }
+
+  body {
+    background: linear-gradient(135deg, var(--bg-dark), var(--bg-medium));
+  }
+
+  button {
+    background-color: #e9ecef;
+  }
+
+  button:hover {
+    background-color: #dee2e6;
+  }
+
+  input, select, textarea {
+    background-color: #ffffff;
+    border-color: #ced4da;
+  }
+}

@@ -289,13 +289,6 @@ const drawFunction = () => {
       .ease(d3.easeLinear)
       .attr('stroke-dashoffset', 0);
   }
-  path.attr('stroke-dasharray', pathLength)
-    .attr('stroke-dashoffset', pathLength)
-    .transition()
-    .duration(1000)
-    .ease(d3.easeLinear)
-    .attr('stroke-dashoffset', 0);
-
   // Highlight the point of interest
   const pointOfInterestX = pointOfInterest.value;
   let pointOfInterestY;

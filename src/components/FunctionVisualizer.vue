@@ -232,13 +232,6 @@ const drawFunction = () => {
       .ease(d3.easeLinear)
       .attr('stroke-dashoffset', 0);
   }
-  path.attr('stroke-dasharray', pathLength)
-    .attr('stroke-dashoffset', pathLength)
-    .transition()
-    .duration(1000)
-    .ease(d3.easeLinear)
-    .attr('stroke-dashoffset', 0);
-
   // Interactive point tracking with improved styling
   const tooltip = d3.select('body')
     .append('div')

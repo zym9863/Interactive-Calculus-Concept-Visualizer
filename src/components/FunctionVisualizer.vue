@@ -351,15 +351,6 @@ const drawFunction = () => {
           .style('opacity', 1)
           .style('left', `${event.pageX + 15}px`)
           .style('top', `${event.pageY - 40}px`);
-            <div style="display: flex; justify-content: space-between; gap: 10px;">
-              <span>x:</span>
-              <span style="font-family: monospace; font-weight: 600;">${xValue.toFixed(3)}</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; gap: 10px;">
-              <span>f(x):</span>
-              <span style="font-family: monospace; font-weight: 600; color: var(--accent-color);">${yValue.toFixed(3)}</span>
-            </div>
-          `);
       } else {
         // Hide tracking elements when out of range
         trackingCircle.transition().duration(100).style('opacity', 0);

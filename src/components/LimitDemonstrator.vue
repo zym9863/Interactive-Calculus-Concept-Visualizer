@@ -271,7 +271,24 @@ const drawFunction = () => {
     .style('filter', 'drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3))');
 
   // Add animation effect
-  const pathLength = path.node().getTotalLength();
+  const pathNode = path.node();
+  if (pathNode) {
+    const pathLength = pathNode.getTotalLength();
+    path.attr('stroke-dasharray', pathLength)
+      .attr('stroke-dashoffset', pathLength)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+      .attr('stroke-dashoffset', 0);
+  } else {
+    // Fallback if pathNode is null, though ideally it shouldn't be
+    path.attr('stroke-dasharray', 'none')
+      .attr('stroke-dashoffset', 'none')
+      .transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+      .attr('stroke-dashoffset', 0);
+  }
   path.attr('stroke-dasharray', pathLength)
     .attr('stroke-dashoffset', pathLength)
     .transition()

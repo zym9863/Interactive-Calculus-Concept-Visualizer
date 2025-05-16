@@ -215,7 +215,23 @@ const drawFunction = () => {
     .style('filter', 'drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3))');
 
   // Add animation effect
-  const pathLength = path.node().getTotalLength();
+  const pathNode = path.node();
+  if (pathNode) {
+    const pathLength = pathNode.getTotalLength();
+    path.attr('stroke-dasharray', pathLength)
+      .attr('stroke-dashoffset', pathLength)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+      .attr('stroke-dashoffset', 0);
+  } else {
+    path.attr('stroke-dasharray', 'none') // Fallback if node is null
+      .attr('stroke-dashoffset', 'none')
+      .transition()
+      .duration(1000)
+      .ease(d3.easeLinear)
+      .attr('stroke-dashoffset', 0);
+  }
   path.attr('stroke-dasharray', pathLength)
     .attr('stroke-dashoffset', pathLength)
     .transition()
@@ -274,7 +290,8 @@ const drawFunction = () => {
     .style('opacity', 0);
 
   // Create overlay for mouse interaction
-  const overlay = svg.append('rect')
+  // const overlay = svg.append('rect') // Removed unused variable
+  svg.append('rect') // Directly append and use
     .attr('width', width)
     .attr('height', height)
     .attr('fill', 'none')
@@ -303,7 +320,7 @@ const drawFunction = () => {
           .style('opacity', 0.7);
 
         // Add horizontal tracking line
-        const horizontalLine = svg.selectAll('.horizontal-track')
+        svg.selectAll('.horizontal-track') // Removed unused variable horizontalLine
           .data([0])
           .join('line')
           .attr('class', 'horizontal-track')
@@ -318,13 +335,22 @@ const drawFunction = () => {
 
         // Enhanced tooltip with formatted values
         tooltip
+          .html(`
+            <div style="font-weight: 600; margin-bottom: 4px; color: var(--primary-color);">函数值</div>
+            <div style="display: flex; justify-content: space-between; gap: 10px;">
+              <span>x:</span>
+              <span style="font-family: monospace; font-weight: 600;">${xValue.toFixed(3)}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; gap: 10px;">
+              <span>f(x):</span>
+              <span style="font-family: monospace; font-weight: 600; color: var(--accent-color);">${yValue.toFixed(3)}</span>
+            </div>
+          `)
           .transition()
           .duration(100)
           .style('opacity', 1)
           .style('left', `${event.pageX + 15}px`)
-          .style('top', `${event.pageY - 40}px`)
-          .html(`
-            <div style="font-weight: 600; margin-bottom: 4px; color: var(--primary-color);">函数值</div>
+          .style('top', `${event.pageY - 40}px`);
             <div style="display: flex; justify-content: space-between; gap: 10px;">
               <span>x:</span>
               <span style="font-family: monospace; font-weight: 600;">${xValue.toFixed(3)}</span>

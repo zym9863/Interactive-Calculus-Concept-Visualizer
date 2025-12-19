@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import FunctionVisualizer from './components/FunctionVisualizer.vue'
 import LimitDemonstrator from './components/LimitDemonstrator.vue'
+import DerivativeVisualizer from './components/DerivativeVisualizer.vue'
 import { ref } from 'vue'
 
 const activeTab = ref('function')
@@ -21,12 +22,18 @@ const activeTab = ref('function')
           @click="activeTab = 'limit'">
           极限与连续性演示
         </button>
+        <button
+          :class="{ active: activeTab === 'derivative' }"
+          @click="activeTab = 'derivative'">
+          导数与切线演示
+        </button>
       </div>
     </header>
 
     <main>
       <FunctionVisualizer v-if="activeTab === 'function'" />
       <LimitDemonstrator v-else-if="activeTab === 'limit'" />
+      <DerivativeVisualizer v-else-if="activeTab === 'derivative'" />
     </main>
 
     <footer>
